@@ -27,6 +27,12 @@ for col in worksheet.iter_cols(min_row=2, max_row=8, min_col=2, max_col=workshee
         worksheet.cell(row=9, column=cell.column, value=col_sum)
 
 
+        p_table = df.pivot_table(
+            columns='port', values='code', aggfunc='count', fill_value=0)
+        p_table = p_table.rename(index={"code": "에러 합계"})
+        p_table = p_table.rename_axis(None, axis=1)
+
+
 """
 Style 
 """
